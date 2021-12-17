@@ -36,34 +36,112 @@ while True:
 
     if op == '+':
         print(soma(num1, num2))
-        r = soma(num1, num2)
+        aux = soma(num1, num2)
         while op != 'AC':
-            n = int(input('Digite um número: '))
+            num = int(input('Digite um número: '))
             op = input('Digite sua opção: ').upper()
 
             if op == '+':
-                print(soma(r, n))
-                r = soma(r, n)
+                print(soma(aux, num))
+                aux = soma(aux, num)
             elif op == '*':
-                print(mult(r, n))
-                r = mult(r, n)
+                print(mult(aux, num))
+                aux = mult(aux, num)
             elif op == '/':
-                print(divi(r, n))
-                r = divi(r, n)
+                print(divi(aux, num))
+                aux = divi(aux, num)
             elif op == '-':
-                print(sub(r, n))
-                r = sub(r, n)
+                print(sub(aux, num))
+                aux = sub(aux, num)
             elif op == '**':
-                print(pot(r, n))
-                r = pot(r, n)
+                print(pot(aux, num))
+                aux = pot(aux, num)
 
     elif op == '*':
         print(mult(num1, num2))
+        aux = mult(num1, num2)
+        while op != 'AC':
+            num = int(input('Digite um número: '))
+            op = input('Digite sua opção: ').upper()
+
+            if op == '+':
+                print(soma(aux, num))
+                aux = soma(aux, num)
+            elif op == '*':
+                print(mult(aux, num))
+                aux = mult(aux, num)
+            elif op == '/':
+                print(divi(aux, num))
+                aux = divi(aux, num)
+            elif op == '-':
+                print(sub(aux, num))
+                aux = sub(aux, num)
+            elif op == '**':
+                print(pot(aux, num))
+                aux = pot(aux, num)
     elif op == '/':
         print(divi(num1, num2))
+        aux = divi(num1, num2)
+        while op != 'AC':
+            num = int(input('Digite um número: '))
+            op = input('Digite sua opção: ').upper()
+
+            if op == '+':
+                print(soma(aux, num))
+                aux = soma(aux, num)
+            elif op == '*':
+                print(mult(aux, num))
+                aux = mult(aux, num)
+            elif op == '/':
+                print(divi(aux, num))
+                aux = divi(aux, num)
+            elif op == '-':
+                print(sub(aux, num))
+                aux = sub(aux, num)
+            elif op == '**':
+                print(pot(aux, num))
+                aux = pot(aux, num)
     elif op == '-':
         print(sub(num1, num2))
+        aux = sub(num1, num2)
+        while op != 'AC':
+            num = int(input('Digite um número: '))
+            op = input('Digite sua opção: ').upper()
+
+            if op == '+':
+                print(soma(aux, num))
+                aux = soma(aux, num)
+            elif op == '*':
+                print(mult(aux, num))
+                aux = mult(aux, num)
+            elif op == '/':
+                print(divi(aux, num))
+                aux = divi(aux, num)
+            elif op == '-':
+                print(sub(aux, num))
+                aux = sub(aux, num)
+            elif op == '**':
+                print(pot(aux, num))
+                aux = pot(aux, num)
     elif op == '**':
         print(pot(num1, num2))
+        aux = pot(num1, num2)
+        while op != 'AC':
+            num = int(input('Digite um número: '))
+            op = input('Digite sua opção: ').upper()
 
-
+            if op == '+':
+                print(soma(aux, num))
+                aux = soma(aux, num)
+            elif op == '*':
+                print(mult(aux, num))
+                aux = mult(aux, num)
+            elif op == '/':
+                print(divi(aux, num))
+                aux = divi(aux, num)
+            elif op == '-':
+                print(sub(aux, num))
+                aux = sub(aux, num)
+            elif op == '**':
+                print(pot(aux, num))
+                aux = pot(aux, num)
