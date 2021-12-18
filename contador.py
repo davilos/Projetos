@@ -1,4 +1,4 @@
-count_m, count_f = 0, 0
+contador = list()
 cadastro = dict()
 
 while True:
@@ -13,8 +13,9 @@ while True:
             if c not in cadastro:
                 cadastro[c] = {'nome': nome, 'sexo': sexo}
                 if sexo == 'Feminino':
-                    count_f += 1
+                    contador.append(0)
                 elif sexo == 'Masculino':
-                    count_m += 1
+                    contador.append(1)
 
-print(f'O total de homens cadastrados foram: {count_m}\nO total de mulheres cadastradas foram: {count_f}')
+print(f'O total de homens cadastrados foram: {contador.count(0)}\n'
+      f'O total de mulheres cadastradas foram: {contador.count(1)}')
