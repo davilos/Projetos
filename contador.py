@@ -7,7 +7,7 @@ while True:
     if len(valores) == 0:
         break
     else:
-        nome, sexo = valores
+        nome, sexo = map(str, valores)
 
         for c in range(len(cadastro)+1):
             if c not in cadastro:
