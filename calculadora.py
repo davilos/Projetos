@@ -30,10 +30,10 @@ def fat(n1):
 
 
 while True:
-    num1 = int(input('Digite um número: '))
-    op = input('Digite sua opção: ')
-    num2 = int(input('Digite outro número: '))
+    num = input('Digite os dois números: ').split()
+    op = input('Digite a operação: ')
 
+    num1, num2 = map(int, num)
     if op == '+':
         print(soma(num1, num2))
         aux = soma(num1, num2)
