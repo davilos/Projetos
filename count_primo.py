@@ -1,6 +1,6 @@
 def contador_de_primos(n):
-    for x in range(2, n // 2 + 1):
-        if not n % x:
+    for _ in range(2, n // 2 + 1):
+        if not n % _:
             return 0
     return 1
 
