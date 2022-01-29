@@ -1,14 +1,10 @@
 import webbrowser
 
-url = input('Digite o que você quer pesquisar: ')
-
-url = url.split()
+url = input('Digite o que você quer pesquisar: ').split()
 
 if len(url) > 1:
     for c in range(len(url)-1):
         url[c] = url[c] + '%20'
-
-print(url)
 
 url = ''.join(url)
 
