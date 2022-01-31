@@ -2,9 +2,16 @@ import pygame
 import random
 import listas_tocador
 
-print(sorted(listas_tocador.albuns, key=lambda a: a["Ano"], reverse=True))
+# Recebe os álbuns e ordena eles pela key "Ano".
+albuns_ordenados = list(sorted(listas_tocador.albuns, key=lambda album: album["Ano"], reverse=True))
 
-print('-=-' * 50)
+# Desempacota somente os valores da variável "albuns_ordenados"
+albuns = [[v for k, v in a.items()] for a in albuns_ordenados]
+
+for x in range(len(albuns)):
+    print(albuns[x])
+
+print('-=-' * 45)
 
 select_album = input('Escolha o álbum: ').strip().title()
 
@@ -14,7 +21,7 @@ ano_do_album = filter(lambda album: select_album.lower() in album.get("Nome").lo
 # Realiza a pesquisa do álbum na lista "musicas".
 musicas_do_album = filter(lambda album: select_album.lower() in album.get("Nome").lower(), listas_tocador.musicas)
 
-# Desempacota somente as músicas da variável "x".
+# Desempacota somente as músicas da variável "musicas_do_album".
 musics = [[v for k, v in m.items() if k == 'Músicas'] for m in musicas_do_album]
 
 print(f'\033[1;97m{select_album}\033[m')
