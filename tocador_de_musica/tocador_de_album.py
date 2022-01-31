@@ -3,20 +3,33 @@ import random
 import listas_tocador
 
 # Recebe os álbuns e ordena eles pela key "Ano".
-albuns_ordenados = list(sorted(listas_tocador.albuns, key=lambda album: album["Ano"], reverse=True))
+albuns_ordenados = sorted(listas_tocador.albuns, key=lambda album: album["Ano"], reverse=True)
 
-# Desempacota somente os valores da variável "albuns_ordenados"
-albuns = [[v for k, v in a.items()] for a in albuns_ordenados]
-
-for x in range(len(albuns)):
-    print(albuns[x])
+for x in range(len(albuns_ordenados)):
+    print(f'\033[1;97m{albuns_ordenados[x]["Nome"]} º {albuns_ordenados[x]["Ano"]}\033[m')
 
 print('-=-' * 45)
 
 select_album = input('Escolha o álbum: ').strip().title()
 
+print('-=-' * 45)
+
 # Realiza a pesquisa do álbum na lista "albuns", pra depois imprimir o ano do álbum.
-ano_do_album = filter(lambda album: select_album.lower() in album.get("Nome").lower(), listas_tocador.albuns)
+"""
+ano_do_album = list(
+        filter(
+            lambda album: select_album.lower() in album.get("Nome").lower(),
+            listas_tocador.albuns)
+    )
+"""
+ano_do_album = list(
+    map(
+        lambda album: album["Ano"],
+        filter(
+            lambda album: select_album.lower() in album.get("Nome").lower(),
+            listas_tocador.albuns)
+    )
+)
 
 # Realiza a pesquisa do álbum na lista "musicas".
 musicas_do_album = filter(lambda album: select_album.lower() in album.get("Nome").lower(), listas_tocador.musicas)
@@ -26,7 +39,7 @@ musics = [[v for k, v in m.items() if k == 'Músicas'] for m in musicas_do_album
 
 print(f'\033[1;97m{select_album}\033[m')
 print('\033[1;97mArctic Monkeys\033[m')
-print(f'Álbum ° {list(y["Ano"] for y in ano_do_album)}')
+print(f'Álbum ° {ano_do_album[0]}')  # ano_do_album[0]["Ano"]
 
 options = int(input('[1] Ordenado [2] Aleatório: '))
 
@@ -51,3 +64,9 @@ else:
                     random_list.remove(x)
     for m in random_list:
         print(m)
+        pygame.mixer.init()
+        pygame.init()
+        pygame.mixer.music.load(f'{m}.mp3')
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy():
+            pass
