@@ -27,7 +27,8 @@ ano_do_album = list(
         lambda album: album["Ano"],
         filter(
             lambda album: select_album.lower() in album.get("Nome").lower(),
-            listas_tocador.albuns)
+            listas_tocador.albuns
+        )
     )
 )
 
@@ -40,13 +41,15 @@ musicas_do_album = list(
 )
 """
 musicas_do_album = list(
-    map(lambda album: album["Músicas"],
+    map(
+        lambda album: album["Músicas"],
         filter(
-            lambda album: select_album.lower() in album.get("Nome").lower()
-            , listas_tocador.musicas)
+            lambda album: select_album.lower() in album.get("Nome").lower(),
+            listas_tocador.musicas
         )
+    )
 )
-print(musicas_do_album)
+
 print(f'\033[1;97m{select_album}\033[m')
 print('\033[1;97mArctic Monkeys\033[m')
 print(f'Álbum ° {ano_do_album[0]}')  # ano_do_album[0]["Ano"]
