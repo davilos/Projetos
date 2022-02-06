@@ -25,7 +25,6 @@ while True:
         os.system("cls")
         for l in range(4):
             for c in range(4):
-                print(end=''*len(matriz))
                 if l == c:
                     print(f'[{matriz[l][c]:^5}]', end='')
 
@@ -35,7 +34,6 @@ while True:
         os.system("cls")
         for l in range(4):
             for c in range(4):
-                print(''*4)
                 if c > l:
                     print(f'[{matriz[l][c]:^5}]', end='')
 
