@@ -1,5 +1,5 @@
 import pygame
-import random
+from random import choice
 import listas_tocador
 
 # Recebe os álbuns e ordena eles pela key "Ano".
@@ -68,9 +68,9 @@ if options == 1:
 
 else:
     random_list = []
-    while len(random_list) < 13:
+    while len(random_list) < len(musicas_do_album[0]):
         for m in range(len(musicas_do_album[0])):
-            random_list.append(random.choice(musicas_do_album[0][m]))
+            random_list.append(choice(musicas_do_album[0]))
 
             for x in random_list:
                 while random_list.count(x) > 1:
