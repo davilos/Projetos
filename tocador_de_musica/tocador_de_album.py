@@ -1,4 +1,7 @@
-import pygame
+from pygame import (
+    mixer,
+    init
+)
 from random import choice
 import listas_tocador
 
@@ -8,11 +11,11 @@ albuns_ordenados = sorted(listas_tocador.albuns, key=lambda album: album["Ano"],
 for x in range(len(albuns_ordenados)):
     print(f'\033[1;97m{albuns_ordenados[x]["Nome"]} º {albuns_ordenados[x]["Ano"]}\033[m')
 
-print('-=-' * 45)
+print('-=-' * 25)
 
 select_album = input('Escolha o álbum: ').strip().title()
 
-print('-=-' * 45)
+print('-=-' * 25)
 
 # Realiza a pesquisa do álbum na lista "albuns", pra depois imprimir o ano do álbum.
 """
@@ -59,11 +62,11 @@ options = int(input('[1] Ordenado [2] Aleatório: '))
 if options == 1:
     for m in range(len(musicas_do_album[0])):
         print(musicas_do_album[0][m])
-        pygame.mixer.init()
-        pygame.init()
-        pygame.mixer.music.load(f'{musicas_do_album[0][m]}.mp3')
-        pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy():
+        mixer.init()
+        init()
+        mixer.music.load(f'{musicas_do_album[0][m]}.mp3')
+        mixer.music.play()
+        while mixer.music.get_busy():
             pass
 
 else:
@@ -77,9 +80,9 @@ else:
                     random_list.remove(x)
     for m in random_list:
         print(m)
-        pygame.mixer.init()
-        pygame.init()
-        pygame.mixer.music.load(f'{m}.mp3')
-        pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy():
+        mixer.init()
+        init()
+        mixer.music.load(f'{m}.mp3')
+        mixer.music.play()
+        while mixer.music.get_busy():
             pass
