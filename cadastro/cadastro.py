@@ -58,23 +58,33 @@ with open('usuarios.csv', 'a+', encoding='utf8', newline='') as arq:
         if opcao == 'sair':
             break
         else:
-            user = User(input('Digite o nome: '), input('Digite o e-mail: '), input('Digite a senha: '))
-            with open('usuarios.csv') as arq2:
-                lei_csv = reader(arq2)
-                for n in lei_csv:
-                    verificador = 0
-                    if user.nome == n[0] or user.email == n[1]:
-                        verificador += 1
-                        print('Usuário ou e-mail já cadastrados!')
-                        break
-                if verificador == 0:
-                    esc_csv.writerow([user.nome, user.email, user.senha])
+            print(f'\033[1;97mCADASTRO\033[m')
+            nome_cadastro = input('Digite o nome: ')
 
-with open('usuarios.csv') as arq:
-    lei_csv = reader(arq)
-    next(lei_csv)
-    for n in lei_csv:
-        print(n[0], n[1], n[2])
+            if nome_cadastro != '':
+                email_cadastro = input('Digite o e-mail: ')
+
+                if '@' and '.com' in email_cadastro:
+                    senha_cadastro = input('Digite a senha: ')
+
+                    if len(senha_cadastro) >= 8:
+                        user = User(nome_cadastro, email_cadastro, senha_cadastro)
+                        with open('usuarios.csv') as arq2:
+                            lei_csv = reader(arq2)
+                            for n in lei_csv:
+                                verificador = 0
+                                if user.nome.title() == n[0] or user.email.title() == n[1]:
+                                    verificador += 1
+                                    print('Usuário ou e-mail já cadastrados!')
+                                    break
+                            if verificador == 0:
+                                esc_csv.writerow([user.nome, user.email, user.senha])
+                    else:
+                        print('\033[31mDigite uma senha mais forte!\033[m')
+                else:
+                    print('\033[31mDigite um e-mail válido!\033[m')
+            else:
+                print('\033[31mNome indisponível!\033[m')
 
 # Usuário
 option = input('Digite o nome de usuário ou senha: ')
