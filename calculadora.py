@@ -1,147 +1,83 @@
+from typing import Union
+
 print('Calculadora')
 
-
-def soma(n1, n2):
-    return n1 + n2
+number = Union[int, float]
 
 
-def mult(n1, n2):
-    return n1 * n2
+def calculator(n1: number, n2: number, opc: number, aux: number = 0, /) -> number:
+    switch = {
+        '+': n1 + n2,
+        '*': n1 * n2,
+        '/': n1 / n2,
+        '-': n1 - n2,
+        '**': n1 ** n2,
+        '%': n1 * n2 / 100
+    }
+    return switch.get(opc, aux)
 
 
-def divi(n1, n2):
-    return n1 / n2
+try:
+    num: list = input('Digite os dois números: ').split()
+    op: str = input('Digite a operação: ').upper()
 
+    if '.' in num[0] and '.' in num[1]:
+        print(aux := calculator(float(num[0]), float(num[2]), op))
+        
+        while True:
+            op: str = input('Digite a operação: ').upper()
+            if op != 'AC':
+                num: str = input('Digite o número: ')
+                if '.' in num:
+                    print(aux := calculator(aux, float(num), op, aux))
+                else:
+                    print(aux := calculator(aux, int(num), op, aux))
+            else:
+                break
 
-def sub(n1, n2):
-    return n1 - n2
+    elif '.' in num[0]:
+        print(aux := calculator(float(num[0]), int(num[1]), op))
 
+        while True:
+            op: str = input('Digite a operação: ').upper()
+            if op != 'AC':
+                num: str = input('Digite o número: ')
+                if '.' in num:
+                    print(aux := calculator(aux, float(num), op, aux))
+                else:
+                    print(aux := calculator(aux, int(num), op, aux))
+            else:
+                break
 
-def pot(n1, n2):
-    return n1 ** n2
+    elif '.' in num[1]:
+        print(aux := calculator(float(int[0]), float(num[1]), op))
 
+        while True:
+            op: str = input('Digite a operação: ').upper()
+            if op != 'AC':
+                num: str = input('Digite o número: ')
+                if '.' in num:
+                    print(aux := calculator(aux, float(num), op, aux))
+                else:
+                    print(aux := calculator(aux, int(num), op, aux))
+            else:
+                break
 
-def fat(n1):
-    f = 1
-    for n in range(n1, 0, -1):
-        f *= n
+    else:
+        print(aux := calculator(int(num[0]), int(num[1]), op))
 
-    return f
+        while True:
+            op: str = input('Digite a operação: ').upper()
+            if op != 'AC':
+                num: str = input('Digite o número: ')
+                if '.' in num:
+                    print(aux := calculator(aux, float(num), op, aux))
+                else:
+                    print(aux := calculator(aux, int(num), op, aux))
+            else:
+                break
 
+except (TypeError, ValueError, IndexError) as erro:
+    print(f'\033[31mHouve um erro: {erro}\033[m')
 
-while True:
-    num = input('Digite os dois números: ').split()
-    op = input('Digite a operação: ')
-
-    num1, num2 = map(int, num)
-    if op == '+':
-        print(soma(num1, num2))
-        aux = soma(num1, num2)
-        while op != 'AC':
-            num = int(input('Digite um número: '))
-            op = input('Digite sua opção: ').upper()
-
-            if op == '+':
-                print(soma(aux, num))
-                aux = soma(aux, num)
-            elif op == '*':
-                print(mult(aux, num))
-                aux = mult(aux, num)
-            elif op == '/':
-                print(divi(aux, num))
-                aux = divi(aux, num)
-            elif op == '-':
-                print(sub(aux, num))
-                aux = sub(aux, num)
-            elif op == '**':
-                print(pot(aux, num))
-                aux = pot(aux, num)
-
-    elif op == '*':
-        print(mult(num1, num2))
-        aux = mult(num1, num2)
-        while op != 'AC':
-            num = int(input('Digite um número: '))
-            op = input('Digite sua opção: ').upper()
-
-            if op == '+':
-                print(soma(aux, num))
-                aux = soma(aux, num)
-            elif op == '*':
-                print(mult(aux, num))
-                aux = mult(aux, num)
-            elif op == '/':
-                print(divi(aux, num))
-                aux = divi(aux, num)
-            elif op == '-':
-                print(sub(aux, num))
-                aux = sub(aux, num)
-            elif op == '**':
-                print(pot(aux, num))
-                aux = pot(aux, num)
-    elif op == '/':
-        print(divi(num1, num2))
-        aux = divi(num1, num2)
-        while op != 'AC':
-            num = int(input('Digite um número: '))
-            op = input('Digite sua opção: ').upper()
-
-            if op == '+':
-                print(soma(aux, num))
-                aux = soma(aux, num)
-            elif op == '*':
-                print(mult(aux, num))
-                aux = mult(aux, num)
-            elif op == '/':
-                print(divi(aux, num))
-                aux = divi(aux, num)
-            elif op == '-':
-                print(sub(aux, num))
-                aux = sub(aux, num)
-            elif op == '**':
-                print(pot(aux, num))
-                aux = pot(aux, num)
-    elif op == '-':
-        print(sub(num1, num2))
-        aux = sub(num1, num2)
-        while op != 'AC':
-            num = int(input('Digite um número: '))
-            op = input('Digite sua opção: ').upper()
-
-            if op == '+':
-                print(soma(aux, num))
-                aux = soma(aux, num)
-            elif op == '*':
-                print(mult(aux, num))
-                aux = mult(aux, num)
-            elif op == '/':
-                print(divi(aux, num))
-                aux = divi(aux, num)
-            elif op == '-':
-                print(sub(aux, num))
-                aux = sub(aux, num)
-            elif op == '**':
-                print(pot(aux, num))
-                aux = pot(aux, num)
-    elif op == '**':
-        print(pot(num1, num2))
-        aux = pot(num1, num2)
-        while op != 'AC':
-            num = int(input('Digite um número: '))
-            op = input('Digite sua opção: ').upper()
-
-            if op == '+':
-                print(soma(aux, num))
-                aux = soma(aux, num)
-            elif op == '*':
-                print(mult(aux, num))
-                aux = mult(aux, num)
-            elif op == '/':
-                print(divi(aux, num))
-                aux = divi(aux, num)
-            elif op == '-':
-                print(sub(aux, num))
-                aux = sub(aux, num)
-            elif op == '**':
-                print(pot(aux, num))
-                aux = pot(aux, num)
+print('\033[1;97mPrograma finalizado!\033[m')
