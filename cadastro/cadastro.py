@@ -46,6 +46,10 @@ class User(Cadastro):
         return f'Temos {cls.count} usuário(s) no sistema.'
 
 
+def make_user(user_class: type[User], nome: str, email: str, senha: str) -> User:
+    return user_class(nome=nome, email=email, senha=senha)
+
+
 with open('usuarios.csv', 'a+', encoding='utf8', newline='') as arq:
     esc_csv = writer(arq)
     if os.path.exists('usuarios.csv'):
@@ -68,7 +72,7 @@ with open('usuarios.csv', 'a+', encoding='utf8', newline='') as arq:
                     senha_cadastro = input('Digite a senha: ')
 
                     if len(senha_cadastro) >= 8:
-                        user = User(nome_cadastro, email_cadastro, senha_cadastro)
+                        user = make_user(nome_cadastro, email_cadastro, senha_cadastro)
                         with open('usuarios.csv') as arq2:
                             lei_csv = reader(arq2)
                             for n in lei_csv:
