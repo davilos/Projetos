@@ -1,4 +1,4 @@
-#!/home/davilos/Projetos/venv/bin/python
+#!/home/davilos/projects/Projetos/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
